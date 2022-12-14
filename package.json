@@ -1,8 +1,8 @@
 {
   "name": "notifications-service",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Um microserviço para enviar notificações desenvolvido no Ignite Lab",
+  "author": "Breno Felipe de Bairros",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
