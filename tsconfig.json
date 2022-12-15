@@ -12,16 +12,19 @@
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
-    "strictNullChecks": false,
+    "strict": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "strictPropertyInitialization": false,
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@app": ["./src/app/*"],
-      "@infra": ["./src/infra/*"],
-      "@helpers": ["./src/helpers/*"],
-      "@test": ["./test/*"]
+      "@app/*":["./src/app/*"],
+      "@helpers/*":["./src/helpers/*"],
+      "@infra/*":["./src/infra/*"],
+      "@test/*":["./test/*"]
     }
   }
 }
