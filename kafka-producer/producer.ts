@@ -6,11 +6,11 @@ async function bootstrap() {
   config();
 
   const kafka = new Kafka({
-    brokers: [process.env.UPSTASH_KAFKA_BROKERS],
+    brokers: [String(process.env.UPSTASH_KAFKA_BROKERS)],
     sasl: {
       mechanism: 'scram-sha-256',
-      username: process.env.UPSTASH_KAFKA_REST_USERNAME,
-      password: process.env.UPSTASH_KAFKA_REST_PASSWORD,
+      username: String(process.env.UPSTASH_KAFKA_REST_USERNAME),
+      password: String(process.env.UPSTASH_KAFKA_REST_PASSWORD),
     },
     ssl: true,
   });
