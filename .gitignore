@@ -36,3 +36,5 @@ lerna-debug.log*
 
 # Envs
 .env
+
+producer/node_modules
