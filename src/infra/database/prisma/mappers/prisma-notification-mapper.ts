@@ -10,7 +10,7 @@ export class PrismaNotificationMapper {
       category: notification.category,
       recipientId: notification.recipientId,
       readAt: notification.readAt,
-      createdAt: notification.createdAt,
+      created_at: notification.createdAt,
     };
   }
 
