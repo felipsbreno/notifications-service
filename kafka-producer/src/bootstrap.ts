@@ -7,14 +7,12 @@ import { config } from 'dotenv';
 
 async function bootstrap() {
   config();
-
   const fastify = Fastify({ logger: true });
-
   await fastify.register(cors, {
     origin: true,
   });
 
-  await fastify.post('/create-kafka-producer', async (request, reply) => {
+  fastify.post('/create-kafka-producer', async (request, reply) => {
     const kafkaProducerBody = z.object({
       content: z.string(),
       category: z.string(),
@@ -53,11 +51,10 @@ async function bootstrap() {
     });
 
     await producer.disconnect();
-
     return reply.status(204).send({ message: 'Producer criado com sucesso!' });
   });
 
-  await fastify.listen({ port: 8080 }, () => {
+  fastify.listen({ port: 8080 }, () => {
     console.log('Servidor executando.');
   });
 }
