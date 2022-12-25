@@ -2,8 +2,8 @@ import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import { Kafka } from 'kafkajs';
 import { z } from 'zod';
-import { randomUUID } from 'node:crypto';
 import { config } from 'dotenv';
+import { deepCopy } from './utils/utils';
 
 async function bootstrap() {
   config();
@@ -34,24 +34,23 @@ async function bootstrap() {
     });
 
     const producer = kafka.producer();
-
     await producer.connect();
 
     await producer.send({
       topic: 'notifications.send-notification',
       messages: [
         {
-          value: JSON.stringify({
+          value: deepCopy({
             content,
             category,
-            recipientId: recipientId || randomUUID(),
+            recipientId: recipientId,
           }),
         },
       ],
     });
 
+    reply.status(201).send({ message: 'Producer criado com sucesso!' });
     await producer.disconnect();
-    return reply.status(204).send({ message: 'Producer criado com sucesso!' });
   });
 
   fastify.listen({ port: 8080 }, () => {
