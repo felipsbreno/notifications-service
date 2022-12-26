@@ -4,6 +4,9 @@ import { NotificationsRepository } from '@app/repositories/notifications-reposit
 export class InMemoryNotificationsRepository
   implements NotificationsRepository
 {
+  async findAll(): Promise<Notification[]> {
+    return this.notifications.map((item) => item);
+  }
   cancel() {
     throw new Error('Method not implemented.');
   }
